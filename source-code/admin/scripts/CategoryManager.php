@@ -8,12 +8,12 @@ class CategoryManager {
         $this->conn = $conn;
     }
 
-    public function validate($categoryName) {
+    public function validate($categoryName,$discreption,$prix) {
 
         $error = false;
         $errMsg = null;
 
-        if(empty($categoryName)) {
+        if(empty($categoryName && $discreption && $prix)) {
             $errMsg = "Category is required";
             $error = true;
         } 
@@ -26,20 +26,19 @@ class CategoryManager {
         return $errorInfo;
     }
 
-    public function create($categoryName) {
+    public function create($categoryName,$discreption,$prix) {
 
-        $validate = $this->validate($categoryName);
+        $validate = $this->validate($categoryName,$discreption,$prix);
         $success = false;
 
         if (!$validate['error']){
 
             $query = "INSERT INTO ";
             $query .= $this->categoryTable; 
-            $query .= " (categoryName) ";
-            $query .= " VALUES (?)";
-
+            $query .= " (categoryName,discreption,prix) ";
+            $query .= " VALUES (?,?,?)";
             $stmt = $this->conn->prepare($query);
-            $stmt->bind_param("s", $categoryName);
+            $stmt->bind_param("sss", $categoryName,$discreption,$prix);
             
             if ($stmt->execute()) {
                 $success = true;
@@ -59,7 +58,7 @@ class CategoryManager {
 
         $data = [];
     
-        $query = "SELECT id, categoryName FROM ";
+        $query = "SELECT id, categoryName,discreption,prix FROM ";
         $query .= $this->categoryTable;
         
         $result = $this->conn->query($query);
@@ -78,7 +77,7 @@ class CategoryManager {
 
         $data = [];
     
-        $query = "SELECT categoryName FROM ";
+        $query = "SELECT categoryName,discreption,prix FROM ";
         $query .= $this->categoryTable; 
         $query .= " WHERE id=?";
 
@@ -94,19 +93,19 @@ class CategoryManager {
         return $data;
     }
 
-    public function updateById($id, $categoryName) {
+    public function updateById($id, $categoryName,$discreption,$prix) {
 
-        $validate = $this->validate($categoryName);
+        $validate = $this->validate($categoryName,$discreption,$prix);
         $success = false;
 
         if (!$validate['error']){
 
             $query = "UPDATE ";
             $query .= $this->categoryTable;
-            $query .= " SET categoryName = ? WHERE id = ?";
+            $query .= " SET categoryName,discreption,prix = ? WHERE id = ?";
 
             $stmt = $this->conn->prepare($query);
-            $stmt->bind_param("si", $categoryName, $id);
+            $stmt->bind_param("si", $categoryName,$discreption,$prix, $id);
             
             if ($stmt->execute()) {
                 $success = true;

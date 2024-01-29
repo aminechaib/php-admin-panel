@@ -16,7 +16,9 @@ if(isset($_GET['id'])) {
 if(isset($_POST['create'])) {
   
   $categoryName = $_POST['categoryName'];
-  $create = $categoryManager->create($categoryName);
+  $discreption = $_POST['discreption'];
+  $prix = $_POST['prix'];
+  $create = $categoryManager->create($categoryName,$discreption,$prix);
 
   if($create['success']) {
     $msg = "Category is saved successfully";
@@ -33,8 +35,9 @@ if(isset($_POST['update'])) {
   
   $id = $_GET['id'];
   $categoryName = $_POST['categoryName'];
-
-  $update = $categoryManager->updateById($id, $categoryName);
+  $discreption = $_POST['discreption'];
+  $prix = $_POST['prix'];
+  $update = $categoryManager->updateById($id, $categoryName,$discreption,$prix);
 
   if($update['success']) {
     $msg = "Category is updated successfully";
@@ -67,7 +70,13 @@ if($id) {
     <div class="mb-3 mt-3">
       <label for="email">Name</label>
       <input type="text" class="form-control" name="categoryName" value="<?= $getCategory['categoryName'] ?? ''; ?>">
-       <p class="text-danger"><?php echo $errMsg; ?></p>
+      <label for="email">discreption</label>
+      <input type="text" class="form-control" name="discreption" value="<?= $getCategory['discreption'] ?? ''; ?>">
+      <label for="email">prix</label>
+      <input type="text" class="form-control" name="prix" value="<?= $getCategory['prix'] ?? ''; ?>">
+      
+      
+      <p class="text-danger"><?php echo $errMsg; ?></p>
     </div>
 
     <button type="submit" class="btn btn-success" name="<?= $id ? 'update' : 'create'; ?>">Save</button>
