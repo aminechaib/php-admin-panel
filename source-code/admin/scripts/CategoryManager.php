@@ -102,10 +102,10 @@ class CategoryManager {
 
             $query = "UPDATE ";
             $query .= $this->categoryTable;
-            $query .= " SET categoryName,discreption,prix = ? WHERE id = ?";
+            $query .= " SET categoryName = ? ,discreption = ? ,prix = ? WHERE id = ?";
 
             $stmt = $this->conn->prepare($query);
-            $stmt->bind_param("si", $categoryName,$discreption,$prix, $id);
+            $stmt->bind_param("ssdi", $categoryName,$discreption,$prix, $id);
             
             if ($stmt->execute()) {
                 $success = true;
