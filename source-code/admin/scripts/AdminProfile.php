@@ -61,6 +61,9 @@ class AdminProfile {
         
         return $errorInfo;
     }
+    
+
+
 
     public function uploadProfileImage($id= null) {
   
@@ -113,7 +116,6 @@ class AdminProfile {
     public function create($firstName, $lastName, $gender, $emailAddress, $mobileNumber, $pass) {
         $validate = $this->validate($firstName, $lastName, $gender, $emailAddress, $mobileNumber, $pass);
         $success = false;
-    
         if (!$validate['error']) {
             $uploadProfileImage = $this->uploadProfileImage();
 
