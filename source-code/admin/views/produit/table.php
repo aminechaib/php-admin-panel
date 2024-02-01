@@ -40,7 +40,7 @@
         ?>
       <tr>
       <td><?= $sn; ?></td>
-        <td><img src="public/images/admin-profile/<?= $data['profileImage']; ?>" width="100px"></td>
+        <td><img src="public/images/produit/<?= $data['profileImage']; ?>" width="100px"></td>
         <td>
           <?= $data['produitName'];?> <br>
         
@@ -54,7 +54,7 @@
         </td>
 
         <td  class="text-center">
-            <a href="javascript:void(0)" onclick="confirmAdminProfileDelete(<?=$data['id']; ?>)" class="text-danger">
+            <a href="javascript:void(0)" onclick="confirmProduitDelete(<?=$data['id']; ?>)" class="text-danger">
               <i class="fa fa-trash-o"></i>
             </a>
         </td>

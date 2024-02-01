@@ -53,7 +53,7 @@ class Produit {
             $error = false;
             $thumbnailErr ='';
             $profileImageErr = '';
-            $uploadTo = "public/images/admin-profile/"; 
+            $uploadTo = "public/images/produit/"; 
             $allowFileType = array('jpg','png','jpeg');
             $fileName = $_FILES['profileImage']['name'];
 

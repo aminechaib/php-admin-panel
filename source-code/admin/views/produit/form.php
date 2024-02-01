@@ -78,11 +78,11 @@ if($id) {
 ?>
 <div class="row">
     <div class="col-sm-6">
-     <h3 class="mb-4">Admin Profile Form</h3>
+     <h3 class="mb-4">Produit Form</h3>
      <?php echo $msg; ?>
     </div>
     <div class="col-sm-6 text-end">
-        <a href="dashboard.php?page=admin-profile-list" class="btn btn-success">Admin list</a>
+        <a href="dashboard.php?page=produit-list" class="btn btn-success">Produit list</a>
     </div>
 </div>
 
@@ -93,7 +93,7 @@ if($id) {
       <input type="text" class="form-control" name="produitName" value="<?= $getProduit['produitName'] ?? ''; ?>">
        <p class="text-danger"><?= $produitNameErr ?? ''; ?></p>
        
-       <label>Last Name</label>
+       <label>Prix</label>
       <input type="text" class="form-control" name="prix" value="<?= $getProduit['prix'] ?? ''; ?>">
        <p class="text-danger"><?= $prixErr ?? ''; ?></p>
        
@@ -101,14 +101,14 @@ if($id) {
        <label>Discreption</label>
       <input type="text" class="form-control" name="disc" value="<?= $getProduit['disc'] ?? ''; ?>">
        <p class="text-danger"><?= $discErr ?? ''; ?></p>
-       <label >Profile Image</label>
+       <label >Produit Image</label>
        
         <input type="file" class="form-control" name="profileImage" >
         <?php 
          if(isset($getProduit['profileImage'])){
 
         ?>
-            <img src="public/images/admin-profile/<?=$getProduit['profileImage']; ?>" width="100px">
+            <img src="public/images/produit/<?=$getProduit['profileImage']; ?>" width="100px">
         <?php
         }
         ?>
