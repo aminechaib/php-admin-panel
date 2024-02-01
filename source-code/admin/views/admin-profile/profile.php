@@ -8,7 +8,7 @@ $profileData = $profile->getProfile();
     <div class="col-sm-3">
 
     <div class="profile-picture">
-        <img src="public/images/produit/<?= $profileData['profileImage']; ?>" width="200px">
+        <img src="public/images/admin-profile/<?= $profileData['profileImage']; ?>" width="200px">
      </div>
     
     </div>

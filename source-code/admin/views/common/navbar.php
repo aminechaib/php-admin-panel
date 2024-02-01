@@ -4,7 +4,9 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#">Website Name</a>
+<?php
 
+?>
       <!-- right nav--->
       <ul class="navbar-nav justify-content-end">
         <li class="nav-item dropdown">
