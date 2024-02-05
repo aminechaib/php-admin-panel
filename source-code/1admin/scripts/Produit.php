@@ -48,106 +48,54 @@ class Produit {
 
 
 
-    public function uploadProfileImage($id = null)
-    {
-        $error = false;
-        $thumbnailErr = '';
-        $profileImageErr = '';
-        $uploadTo = "public/images/produit/";
-        $allowFileType = array('jpg', 'png', 'jpeg');
-        $fileName = $_FILES['profileImage']['name'];
-    
-        if (empty($fileName) && null !== $id) {
-            $get = $this->getById($id);
-            if (isset($get['profileImage'])) {
-                $fileName = $get['profileImage'];
-            }
-        } else {
+    public function uploadProfileImage($id= null) {
+  
+            $error = false;
+            $thumbnailErr ='';
+            $profileImageErr = '';
+            $uploadTo = "public/images/produit/"; 
+            $allowFileType = array('jpg','png','jpeg');
+            $fileName = $_FILES['profileImage']['name'];
+
+            if(empty($fileName) && null !== $id) {
+
+                $get = $this->getById($id);
+                if(isset($get['profileImage'])) {
+                    $fileName = $get['profileImage'];
+                }
+           
+            } else {
+            
             $tempPath = $_FILES["profileImage"]["tmp_name"];
+        
             $basename = basename($fileName);
-            $originalPath = $uploadTo . $basename;
-            $fileType = pathinfo($originalPath, PATHINFO_EXTENSION);
-    
-            if (!empty($fileName)) {
-                if (in_array($fileType, $allowFileType)) {
-                    if (!move_uploaded_file($tempPath, $originalPath)) {
-                        $thumbnailErr = 'Profile Not uploaded! Try again';
-                        $error = true;
-                    } else {
-                        // Load the uploaded image
-                        if ($fileType == 'jpg' || $fileType == 'jpeg') {
-                            $image = imagecreatefromjpeg($originalPath);
-                        } elseif ($fileType == 'png') {
-                            $image = imagecreatefrompng($originalPath);
-    
-                            // Check if the image has transparency
-                            $hasTransparency = imagecolortransparent($image) !== -1 || imageistruecolor($image);
-                            if ($hasTransparency) {
-                                // Create a white background image
-                                $whiteBackground = imagecreatetruecolor(imagesx($image), imagesy($image));
-                                $white = imagecolorallocate($whiteBackground, 255, 255, 255);
-                                imagefill($whiteBackground, 0, 0, $white);
-    
-                                // Overlay the transparent image onto the white background
-                                imagecopy($whiteBackground, $image, 0, 0, 0, 0, imagesx($image), imagesy($image));
-    
-                                // Set the image to the new white background image
-                                $image = $whiteBackground;
-                            }
-                        }
-    
-                        // Get the original dimensions
-                        $originalWidth = imagesx($image);
-                        $originalHeight = imagesy($image);
-    
-                        // Calculate new dimensions while maintaining aspect ratio
-                        $maxWidth = 150;
-                        $maxHeight = 150;
-    
-                        $ratio = min($maxWidth / $originalWidth, $maxHeight / $originalHeight);
-    
-                        $newWidth = $originalWidth * $ratio;
-                        $newHeight = $originalHeight * $ratio;
-    
-                        // Create a new image canvas with the new dimensions
-                        $resizedImage = imagecreatetruecolor($newWidth, $newHeight);
-    
-                        // Resize the original image to fit the new dimensions
-                        imagecopyresampled($resizedImage, $image, 0, 0, 0, 0, $newWidth, $newHeight, $originalWidth, $originalHeight);
-    
-                        // Save the resized image
-                        if ($fileType == 'jpg' || $fileType == 'jpeg') {
-                            imagejpeg($resizedImage, $originalPath, 100);
-                        } elseif ($fileType == 'png') {
-                            imagepng($resizedImage, $originalPath, 9);
-                        }
-    
-                        // Free up memory
-                        imagedestroy($image);
-                        imagedestroy($resizedImage);
-                    }
-                } else {
-                    $thumbnailErr = 'Profile type is not allowed';
+            $originalPath = $uploadTo.$basename; 
+            $fileType = pathinfo($originalPath, PATHINFO_EXTENSION); 
+         
+            if(!empty($fileName)){ 
+               if(in_array($fileType, $allowFileType)){ 
+
+                 if(!move_uploaded_file($tempPath, $originalPath)){ 
+                    $thumbnailErr = 'Profile Not uploaded ! try again';
                     $error = true;
                 }
-            } else {
-                $thumbnailErr = 'Profile is required';
+             }else{  
+                $thumbnailErr = 'Profile type is not allowed'; 
                 $error = true;
-            }
-        }
-    
+             }
+           } else {
+                 $thumbnailErr = 'Profile is required'; 
+                $error = true;
+           }  
+         }
         $thumbnailInfo = [
-            "error" => $error,
-            "profileImageErr" => $thumbnailErr,
+            "error" => $error, 
+            "profileImageErr" => $thumbnailErr, 
             "profileImage" => $fileName
         ];
-    
+
         return  $thumbnailInfo;
     }
-    
-
-
-
     public function create($produitName, $prix, $disc) {
         $validate = $this->validate($produitName, $prix, $disc);
         $success = false;

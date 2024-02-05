@@ -24,6 +24,12 @@
             <i class="fa fa-list"></i> produit
             </a>
         </li>
+
+<li class="nav-item">
+            <a href="dashboard.php?page=ImageUploadAndCrop-list" class="nav-link">
+            <i class="fa fa-list"></i> upload inage
+            </a>
+        </li>
         <li class="nav-item">
             <a href="dashboard.php?page=content-list" class="nav-link">
             <i class="fa fa-list"></i> Content

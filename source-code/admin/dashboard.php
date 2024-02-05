@@ -60,6 +60,19 @@ require_once('scripts/AdminAccess.php');
               case 'category-form':
                 require_once 'views/category/form.php';
                 break;
+
+
+             /* ImageUploadAndCrop Navigation */
+              case 'ImageUploadAndCrop-list':
+                require_once 'views/ImageUploadAndCrop/table.php';
+                break;
+
+              case 'ImageUploadAndCrop-form':
+                require_once 'views/ImageUploadAndCrop/form.php';
+                break;
+
+
+
                 /* produit Navigation */
               case 'produit-list':
                 require_once 'views/produit/table.php';
