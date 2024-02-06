@@ -62,7 +62,7 @@ require_once('scripts/AdminAccess.php');
                 break;
 
 
-             /* ImageUploadAndCrop Navigation */
+                /* ImageUploadAndCrop Navigation */
               case 'ImageUploadAndCrop-list':
                 require_once 'views/ImageUploadAndCrop/table.php';
                 break;

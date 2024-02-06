@@ -1,10 +1,10 @@
+
+
 <?php
 class Produit {
 
     private $conn;
     private $produitTable = 'produit';
-    
-
     public function __construct($conn) {
         $this->conn = $conn;
     }
@@ -25,7 +25,10 @@ class Produit {
         if(empty($prix)) {
             $prixErr = "Last Name is required";
             $error = true;
-        } 
+        } elseif (!is_numeric($prix)) {
+            $prixErr = "Prix must be a number";
+            $error = true;
+        }
         if(empty($disc)) {
             $discErr = "disc is required";
             $error = true;

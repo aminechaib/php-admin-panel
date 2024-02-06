@@ -23,9 +23,12 @@ class Produit {
             $error = true;
         } 
         if(empty($prix)) {
-            $prixErr = "Last Name is required";
+            $prixErr = "Prix is required";
             $error = true;
-        } 
+        } elseif (!is_numeric($prix)) {
+            $prixErr = "Prix must be a number";
+            $error = true;
+        }        
         if(empty($disc)) {
             $discErr = "disc is required";
             $error = true;

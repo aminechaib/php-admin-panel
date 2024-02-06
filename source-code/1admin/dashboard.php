@@ -6,7 +6,7 @@ require_once('scripts/AdminAccess.php');
 <html lang="en">
 
 <head>
-  <title>PHP Admin Panel</title>
+  <title>Admin Panel</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 

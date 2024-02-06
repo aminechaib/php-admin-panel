@@ -1,3 +1,4 @@
+<link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
 
 
 <?php 
@@ -21,6 +22,14 @@ if(isset($_GET['id'])) {
     $create = $produit->create($produitName, $prix, $disc);
 
     if($create['success']) {
+
+        ?>
+        <script type="text/javascript">
+    window.location = "http://localhost/php-admin-panel/source-code/admin/dashboard.php?page=produit-list";
+    window.location = "http://localhost/php-admin-panel/source-code/admin/dashboard.php?page=produit-form";
+</script>
+
+        <?php
         $msg = "Admin Profile is created successfully";
     }
 
@@ -45,6 +54,12 @@ if(isset($_POST['update'])) {
     $update = $produit->updateById($id, $produitName, $prix, $disc);
 
     if($update['success']) {
+        ?>
+                <script type="text/javascript">
+    window.location = "http://localhost/php-admin-panel/source-code/admin/dashboard.php?page=produit-list";
+    window.location = "http://localhost/php-admin-panel/source-code/admin/dashboard.php?page=produit-form";
+</script>
+        <?php
         $msg = "Admin Profile is updated successfully";
     }
 
@@ -65,6 +80,7 @@ if($id) {
 }
 
 ?>
+
 <div class="row">
     <div class="col-sm-6">
      <h3 class="mb-4">Produit Form</h3>
