@@ -5,8 +5,6 @@ require_once('scripts/Produit.php');
 $produit = new Produit($conn);
 $produitlist = $produit->get();
 
-
-
 ?>
 <div class="row">
   <div class="col-sm-6">
@@ -17,7 +15,7 @@ $produitlist = $produit->get();
   </div>
 </div>
 
-<div class="table-responsive-sm">
+<div class="table-responsive">
   <table class="table table-hover">
     <thead>
       <tr>

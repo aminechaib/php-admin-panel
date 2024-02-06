@@ -232,6 +232,22 @@ $produites = $Produit->get();
 					height: 150px;
 					background-size: cover;
 				}
+				
+			
+				.disc-container {
+    width: 300px; /* Adjust the width as needed */
+    min-height: 100px; /* Set a minimum height for the container */
+    overflow: hidden;
+}
+
+.disc {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal; /* Allow text to wrap */
+}
+
+
+
 			</style>
 
 			<div id="second" class="row ftco-animate">
@@ -245,18 +261,23 @@ $produites = $Produit->get();
 							foreach ($produites as $data) {
 								//  var_dump($data);
 						?>
-								<div class="item">
-									<div class="testimony-wrap p-4 pb-5">
+<div class="item">
+    <div class="testimony-wrap p-4 pb-5">
+        <div><img src="admin/public/images/produit/<?= $data['profileImage'] ?>" alt=""></div>
+        <div class="text text-center">
+            <p class="name"><?= $data['produitName']; ?></p>
+            <!-- Apply CSS to truncate the text -->
+            <div class="mb-5 pl-4 line disc-container">
+				
+                <p class="disc"><?= $data['disc']; ?></p>
+            </div>
+            <span class="position"><?= $data['prix']; ?> DZD</span>
+        </div>
+    </div>
+</div>
 
-										<div ><img src="admin/public/images/produit/<?= $data['profileImage'] ?>" alt=""></div>
-										<div class="text text-center">
-											<p class="name"><?= $data['produitName']; ?></p>
-											<p class="mb-5 pl-4 line"><?= $data['disc'] ?></p>
 
-											<span class="position"><?= $data['prix']; ?> DZD</span>
-										</div>
-									</div>
-								</div>
+
 						<?php
 								$sn++;
 							}

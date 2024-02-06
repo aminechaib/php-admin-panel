@@ -12,69 +12,58 @@ if(isset($_GET['id'])) {
   $id = $_GET['id'];
 }
 
-/* create admin profile  */
-if(isset($_POST['create'])) {
- 
-  $produitName        = $_POST['produitName'];
-  $prix         = $_POST['prix'];
-  $disc           = $_POST['disc'];
+/* create admin profile  */if(isset($_POST['create']) || isset($_POST['update'])) {
+    $produitName = $_POST['produitName'];
+    $prix = $_POST['prix'];
+    $disc = $_POST['disc'];
 
-
-  $create = $produit->create($produitName, $prix, $disc);
-
-  if($create['success']) {
-    $msg = "Admin Profile is created successfully";
-  }
-
-  if($create['uploadProfileImage']) {
-    $profileImageErr = $create['uploadProfileImage'];
-    
-  }
-
-  if($create['errMsg']) {
    
-    $produitNameErr = $create['errMsg']['produitName'];
-    $prixErr = $create['errMsg']['prix'];
-    $discErr = $create['errMsg']['disc'];
-  }
+    $create = $produit->create($produitName, $prix, $disc);
 
+    if($create['success']) {
+        $msg = "Admin Profile is created successfully";
+    }
+
+    if($create['uploadProfileImage']) {
+        $profileImageErr = $create['uploadProfileImage'];
+    }
+
+    if($create['errMsg']) {
+        $produitNameErr = $create['errMsg']['produitName'];
+        $prixErr = $create['errMsg']['prix'];
+        $discErr = $create['errMsg']['disc'];
+    }
 }
 
-
-
-/* update admin profile  */
+/* update admin profile */
 if(isset($_POST['update'])) {
- 
-    $produitName        = $_POST['produitName'];
-    $prix         = $_POST['prix'];
-    $disc           = $_POST['disc'];
+    $produitName = $_POST['produitName'];
+    $prix = $_POST['prix'];
+    $disc = $_POST['disc'];
+
    
-  
     $update = $produit->updateById($id, $produitName, $prix, $disc);
-  
+
     if($update['success']) {
-      $msg = "Admin Profile is updated successfully";
+        $msg = "Admin Profile is updated successfully";
     }
-  
+
     if($update['uploadProfileImage']) {
-      $profileImageErr = $update['uploadProfileImage'];
-      
+        $profileImageErr = $update['uploadProfileImage'];
     }
-    
-  
+
     if($update['errMsg']) {
-     
-      $produitNameErr = $update['errMsg']['produitName'];
-      $prixErr = $update['errMsg']['prix'];
-      $discErr = $update['errMsg']['disc'];
+        $produitNameErr = $update['errMsg']['produitName'];
+        $prixErr = $update['errMsg']['prix'];
+        $discErr = $update['errMsg']['disc'];
     }
-  
-  }
-  /* edit admin profile */
-if($id) {
-  $getProduit = $produit->getById($id);
-   
 }
+
+/* edit admin profile */
+if($id) {
+    $getProduit = $produit->getById($id);
+}
+
 ?>
 <div class="row">
     <div class="col-sm-6">
@@ -90,16 +79,16 @@ if($id) {
 <form method="post" enctype="multipart/form-data">
     <div class="mb-3 mt-3">
       <label>produit Name</label>
-      <input type="text" class="form-control" name="produitName" value="<?= $getProduit['produitName'] ?? ''; ?>">
+      <input type="text" class="form-control" name="produitName" maxlength="30" value="<?= $getProduit['produitName'] ?? ''; ?>">
        <p class="text-danger"><?= $produitNameErr ?? ''; ?></p>
        
        <label>Prix</label>
-      <input type="text" class="form-control" name="prix" value="<?= $getProduit['prix'] ?? ''; ?>">
+      <input type="text" class="form-control"  maxlength="8" name="prix" value="<?= $getProduit['prix'] ?? ''; ?>">
        <p class="text-danger"><?= $prixErr ?? ''; ?></p>
        
 
        <label>Discreption</label>
-      <input type="text" class="form-control" name="disc" value="<?= $getProduit['disc'] ?? ''; ?>">
+      <input type="text" class="form-control" maxlength="80" name="disc" value="<?= $getProduit['disc'] ?? ''; ?>">
        <p class="text-danger"><?= $discErr ?? ''; ?></p>
        <label >Produit Image</label>
        
