@@ -52,14 +52,7 @@ require_once('scripts/AdminAccess.php');
             $page = $_GET['page'];
             switch ($page) {
 
-                /* Category Navigation */
-              case 'category-list':
-                require_once 'views/category/table.php';
-                break;
-
-              case 'category-form':
-                require_once 'views/category/form.php';
-                break;
+             
 
 
                 /* ImageUploadAndCrop Navigation */
@@ -91,16 +84,6 @@ require_once('scripts/AdminAccess.php');
                 require_once 'views/section/form.php';
                 break;
 
-                /* Content nvigation*/
-              case 'content-list':
-                require_once 'views/content/table.php';
-                break;
-              case 'content-form':
-                require_once 'views/content/form.php';
-                break;
-              case 'content-view':
-                require_once 'views/content/view.php';
-                break;
 
                 /* Admin Profile*/
               case 'admin-profile-list':

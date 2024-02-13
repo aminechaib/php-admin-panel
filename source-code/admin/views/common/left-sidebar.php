@@ -15,11 +15,6 @@
 
     <ul class="nav flex-column toggle-list">
         <li class="nav-item">
-            <a href="dashboard.php?page=category-list" class="nav-link">
-            <i class="fa fa-list"></i> Category
-            </a>
-        </li>
-        <li class="nav-item">
             <a href="dashboard.php?page=produit-list" class="nav-link">
             <i class="fa fa-list"></i> produit
             </a>
@@ -30,16 +25,6 @@
             </a>
         </li>
 
-<li class="nav-item">
-            <a href="dashboard.php?page=ImageUploadAndCrop-list" class="nav-link">
-            <i class="fa fa-list"></i> upload inage
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="dashboard.php?page=content-list" class="nav-link">
-            <i class="fa fa-list"></i> Content
-            </a>
-        </li>
     </ul>
   </li>
 
