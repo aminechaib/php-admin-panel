@@ -82,6 +82,15 @@ require_once('scripts/AdminAccess.php');
                 require_once 'views/produit/form.php';
                 break;
 
+                  /* section Navigation */
+              case 'section-list':
+                require_once 'views/section/table.php';
+                break;
+
+              case 'section-form':
+                require_once 'views/section/form.php';
+                break;
+
                 /* Content nvigation*/
               case 'content-list':
                 require_once 'views/content/table.php';

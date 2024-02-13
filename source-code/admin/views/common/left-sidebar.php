@@ -24,6 +24,11 @@
             <i class="fa fa-list"></i> produit
             </a>
         </li>
+        <li class="nav-item">
+            <a href="dashboard.php?page=section-list" class="nav-link">
+            <i class="fa fa-list"></i> section
+            </a>
+        </li>
 
 <li class="nav-item">
             <a href="dashboard.php?page=ImageUploadAndCrop-list" class="nav-link">

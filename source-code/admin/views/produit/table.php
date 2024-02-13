@@ -69,6 +69,7 @@ $produitlist = $produit->get();
 
 
     </tbody>
+
   </table>
 </div>
 

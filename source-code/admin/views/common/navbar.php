@@ -4,13 +4,11 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#">Website Name</a>
-<?php
 
-?>
       <!-- right nav--->
       <ul class="navbar-nav justify-content-end">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">John</a>
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">account</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="dashboard.php?page=profile">Profile</a></li>
             <li><a class="dropdown-item" href="scripts/AdminLogout.php">Logout</a></li>

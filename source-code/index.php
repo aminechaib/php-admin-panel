@@ -1,9 +1,9 @@
 <?php
 require_once('database.php');
 require_once('admin/scripts/Produit.php');
+require_once('admin/scripts/section.php');
 
-$Produit = new Produit($conn);
-$produites = $Produit->get();
+
 
 
 ?>
@@ -81,6 +81,8 @@ $produites = $Produit->get();
 	</nav>
 	<!-- END nav -->
 
+
+
 	<section id="home-section" class="hero">
 		<div class="home-slider owl-carousel">
 			<div class="slider-item" style="background-image: url(images/bg_1.jpg);">
@@ -155,25 +157,73 @@ $produites = $Produit->get();
 	<section class="ftco-section ftco-category ftco-no-pt">
 		<div class="container">
 			<div class="row">
+			<?php
+$section = new section($conn);
+
+// Assuming $section->get() returns an array of objects
+$sectiones = $section->get();
+
+// Convert objects to associative arrays
+$sectionData = [];
+foreach ($sectiones as $section) {
+    $sectionData[] = (array)$section;
+}
+
+// Dump the converted array
+// var_dump($sectionData);
+
+?>
+	
 				<div class="col-md-8">
 					<div class="row">
 						<div class="col-md-6 order-md-last align-items-stretch d-flex">
-							<div class="category-wrap-2 ftco-animate img align-self-stretch d-flex" style="background-image: url(images/category.jpg);">
+							<div class="category-wrap-2 ftco-animate img align-self-stretch d-flex" style="background-image: white">
 								<div class="text text-center">
 									<h2>Badwa</h2>
 									<p>Protège la santé de chaque maison</p>
 								</div>
 							</div>
+					
 						</div>
 						<div class="col-md-6">
-							<div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(images/category-1.jpg);">
+						<?php 
+							$section = $sectionData[0] ?? null; // Accessing the first element
+
+							if ($section !== null) {
+								// Accessing properties from the first element
+								$id = $section['id'] ?? null;
+								$profileImage = $section['profileImage'] ?? null;
+								$firstName = $section['firstName'] ?? null;
+							
+								if ($id !== null && $profileImage !== null && $firstName !== null) {
+									
+								
+							?>
+							<div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(admin/public/images/section/<?php 	echo  $profileImage;
+								
+							?>);">
 								<div class="text px-3 py-1">
-									<h2 class="mb-0"><a href="#">Fruits</a></h2>
+									<h2 class="mb-0"><a href="#"><?php  echo $firstName; }} ?></a></h2>
 								</div>
 							</div>
-							<div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(images/category-2.jpg);">
+							<?php 
+							$section = $sectionData[1] ?? null; // Accessing the first element
+
+							if ($section !== null) {
+								// Accessing properties from the first element
+								$id = $section['id'] ?? null;
+								$profileImage = $section['profileImage'] ?? null;
+								$firstName = $section['firstName'] ?? null;
+							
+								if ($id !== null && $profileImage !== null && $firstName !== null) {
+									
+								
+							?>
+							<div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(admin/public/images/section/<?php 	echo  $profileImage;
+								
+							?>);">
 								<div class="text px-3 py-1">
-									<h2 class="mb-0"><a href="#">Vegetables</a></h2>
+									<h2 class="mb-0"><a href="#"><?php  echo $firstName; }} ?></a></h2>
 								</div>
 							</div>
 						</div>
@@ -181,14 +231,43 @@ $produites = $Produit->get();
 				</div>
 
 				<div class="col-md-4">
-					<div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(images/category-3.jpg);">
+				<?php 
+							$section = $sectionData[2] ?? null; // Accessing the first element
+
+							if ($section !== null) {
+								// Accessing properties from the first element
+								$id = $section['id'] ?? null;
+								$profileImage = $section['profileImage'] ?? null;
+								$firstName = $section['firstName'] ?? null;
+							
+								if ($id !== null && $profileImage !== null && $firstName !== null) {
+									
+								
+							?>
+					<div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(admin/public/images/section/<?php 	echo  $profileImage;
+								
+							?>);">
 						<div class="text px-3 py-1">
-							<h2 class="mb-0"><a href="#">Juices</a></h2>
+							<h2 class="mb-0"><a href="#"><?php  echo $firstName; }} ?></a></h2>
 						</div>
 					</div>
-					<div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(images/category-4.jpg);">
+					<?php 
+							$section = $sectionData[3] ?? null; // Accessing the first element
+
+							if ($section !== null) {
+								// Accessing properties from the first element
+								$id = $section['id'] ?? null;
+								$profileImage = $section['profileImage'] ?? null;
+								$firstName = $section['firstName'] ?? null;
+							
+								if ($id !== null && $profileImage !== null && $firstName !== null) {	
+								
+							?>
+					<div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(admin/public/images/section/<?php 	echo  $profileImage;
+								
+							?>);">
 						<div class="text px-3 py-1">
-							<h2 class="mb-0"><a href="#">Dried</a></h2>
+							<h2 class="mb-0"><a href="#"><?php  echo $firstName; }} ?></a></h2>
 						</div>
 					</div>
 				</div>
@@ -224,7 +303,10 @@ $produites = $Produit->get();
 				</div>
 			</div>
 
-
+<?php
+$Produit = new Produit($conn);
+$produites = $Produit->get();
+?>
 			<style>
 				img {
 					float: left;
@@ -232,22 +314,22 @@ $produites = $Produit->get();
 					height: 150px;
 					background-size: cover;
 				}
-				
-			
+
+
 				.disc-container {
-    width: 300px; /* Adjust the width as needed */
-    min-height: 100px; /* Set a minimum height for the container */
-    overflow: hidden;
-}
+					width: 300px;
+					/* Adjust the width as needed */
+					min-height: 100px;
+					/* Set a minimum height for the container */
+					overflow: hidden;
+				}
 
-.disc {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal; /* Allow text to wrap */
-}
-
-
-
+				.disc {
+					word-wrap: break-word;
+					overflow-wrap: break-word;
+					white-space: normal;
+					/* Allow text to wrap */
+				}
 			</style>
 
 			<div id="second" class="row ftco-animate">
@@ -261,20 +343,20 @@ $produites = $Produit->get();
 							foreach ($produites as $data) {
 								//  var_dump($data);
 						?>
-<div class="item">
-    <div class="testimony-wrap p-4 pb-5">
-        <div><img src="admin/public/images/produit/<?= $data['profileImage'] ?>" alt=""></div>
-        <div class="text text-center">
-            <p class="name"><?= $data['produitName']; ?></p>
-            <!-- Apply CSS to truncate the text -->
-            <div class="mb-5 pl-4 line disc-container">
-				
-                <p class="disc"><?= $data['disc']; ?></p>
-            </div>
-            <span class="position"><?= $data['prix']; ?> DZD</span>
-        </div>
-    </div>
-</div>
+								<div class="item">
+									<div class="testimony-wrap p-4 pb-5">
+										<div><img src="admin/public/images/produit/<?= $data['profileImage'] ?>" alt=""></div>
+										<div class="text text-center">
+											<p class="name"><?= $data['produitName']; ?></p>
+											<!-- Apply CSS to truncate the text -->
+											<div class="mb-5 pl-4 line disc-container">
+
+												<p class="disc"><?= $data['disc']; ?></p>
+											</div>
+											<span class="position"><?= $data['prix']; ?> DZD</span>
+										</div>
+									</div>
+								</div>
 
 
 
