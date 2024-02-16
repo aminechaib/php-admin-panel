@@ -1,6 +1,6 @@
 <?php
 
-require_once('scripts/Section.php');
+require_once('scripts/section.php');
 
 $produit = new Section($conn);
 $produitlist = $produit->get();
@@ -32,10 +32,10 @@ $produitlist = $produit->get();
           <tr>
             <td><?= $sn; ?></td>
             <td><img src="public/images/section/<?= $data['profileImage']; ?>" width="100px"></td>
-<td><?=
-$data['firstName'];
+            <td><?=
+                $data['firstName'];
 
-?></td>
+                ?></td>
             <td class="text-center">
               <a href="dashboard.php?page=section-form&id=<?= $data['id']; ?>" class="text-success">
                 <i class="fa fa-edit"></i>
