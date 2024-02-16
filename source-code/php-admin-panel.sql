@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 16, 2023 at 01:01 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: localhost
+-- Generation Time: Feb 16, 2024 at 06:06 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -46,7 +46,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `firstName`, `lastName`, `gender`, `emailAddress`, `mobileNumber`, `pass`, `profileImage`, `status`, `created_at`, `updated_at`) VALUES
-(9, 'Super', 'Admin', 'male', 'admin@gmail.com', '1234567890', 'admin', 'super-admin.jpg', 0, '2023-11-27 16:24:15.122141', '0000-00-00');
+(9, 'Super', 'Admin', 'male', 'ccamine4@gmail.com', '1234567890', 'amine', 'super-admin.jpg', 0, '2024-02-14 13:17:13.529258', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -94,6 +94,50 @@ CREATE TABLE `content` (
 
 INSERT INTO `content` (`id`, `categoryId`, `title`, `description`, `thumbnail`, `created_at`, `updated_at`) VALUES
 (13, '39', 'What is Lorem Ipsum?', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry', 'backgroundDefault.jpg', '2023-11-28 15:53:46.580379', '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `image`
+--
+
+CREATE TABLE `image` (
+  `id` int(255) NOT NULL,
+  `firstName` varchar(255) NOT NULL,
+  `profileImage` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `image`
+--
+
+INSERT INTO `image` (`id`, `firstName`, `profileImage`) VALUES
+(1, 'bbbbaa', 'image_3.jpg'),
+(2, 'aa', 'image_5.jpg'),
+(3, 'aa', 'image_5.jpg'),
+(4, 'aa', 'image_6.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `produit`
+--
+
+CREATE TABLE `produit` (
+  `id` int(255) NOT NULL,
+  `profileImage` varchar(255) NOT NULL,
+  `disc` varchar(255) NOT NULL,
+  `prix` varchar(255) NOT NULL,
+  `produitName` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `produit`
+--
+
+INSERT INTO `produit` (`id`, `profileImage`, `disc`, `prix`, `produitName`) VALUES
+(1, 'istockphoto-1017915018-612x612.jpg', 'zzzdd', '233', 'pumpkin'),
+(2, 'image_4.jpg', 'zzzdd', '233', 'pumpkin');
 
 -- --------------------------------------------------------
 
@@ -207,6 +251,18 @@ ALTER TABLE `content`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `image`
+--
+ALTER TABLE `image`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `produit`
+--
+ALTER TABLE `produit`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `siteidentity`
 --
 ALTER TABLE `siteidentity`
@@ -251,6 +307,18 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `content`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `image`
+--
+ALTER TABLE `image`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `produit`
+--
+ALTER TABLE `produit`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `siteidentity`
